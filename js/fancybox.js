@@ -1,19 +1,26 @@
-$(document).ready(function() {
-  $('img').each(function() {
-    if ($(this).parent().hasClass('fancybox')) return;
-    if ($(this).hasClass('nofancybox')) return;
-    var alt = this.alt;
-    if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-    $(this).wrap('<a href="' + ($(this).attr('data-src') == null ? this.src : $(this).attr('data-src')) + '" title="' + alt + '" class="fancybox"></a>');
+// fancybox js
+let fancyTimer = setInterval(function(){
+  if(!window.$){
+    return;
+  }
+  $(document).ready(function() {
+    $(".markdown-body img").each(function () {
+      if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+        return;
+      }
+      // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("style", "text-decoration: none; outline: none; border: 0px none transparent;");
+      // 判断是否启用了lazyload图片懒加载
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      } else {
+        $(element).attr("href", $(this).attr("src"));
+      }
+      $(this).wrap(element);
+    });
+
+    clearInterval(fancyTimer);
   });
-  $(this).find('.fancybox').each(function(){
-    $(this).attr('rel', 'article');
-  });
-});
-$(document).ready(function() {
-  $("a[href$='.jpg'],a[href$='.png'],a[href$='.gif'],a[href$='.webp']").attr('rel', 'gallery').fancybox({
-    helpers : {
-    title: { type: 'inside'}
-    }
-  });
-});
+}, 10);
