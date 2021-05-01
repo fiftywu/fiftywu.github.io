@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>FiftyWu&#39;s Blog</title>
+  <title>wulin homepage</title>
   
-  <subtitle>In memory of the living</subtitle>
+  <subtitle>subtitle</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fiftywu.github.io/"/>
@@ -10,7 +10,7 @@
   <id>https://fiftywu.github.io/</id>
   
   <author>
-    <name>FiftyWu</name>
+    <name>wulin</name>
     
   </author>
   
